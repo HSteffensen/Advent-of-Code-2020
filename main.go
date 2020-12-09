@@ -6,7 +6,9 @@ import (
 	"HSteffensen/AoC2020/day2"
 	"HSteffensen/AoC2020/day3"
 	"HSteffensen/AoC2020/day4"
+	"HSteffensen/AoC2020/day5"
 	"fmt"
+	"strings"
 )
 
 func runDay1() {
@@ -41,9 +43,18 @@ func runDay4() {
 	fmt.Println("Day 4, Part 2 answer:", result2)
 }
 
+func runDay5() {
+	data := strings.Split(day5.Input, "\n")
+	result1 := day5.MaxSeatId(data)
+	fmt.Println("Day 5, Part 1 answer:", result1)
+	result2 := day5.MySeatId(data)
+	fmt.Println("Day 5, Part 2 answer:", result2)
+}
+
 func main() {
 	runDay1()
 	runDay2()
 	runDay3()
 	runDay4()
+	runDay5()
 }
