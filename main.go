@@ -8,6 +8,7 @@ import (
 	"HSteffensen/AoC2020/day4"
 	"HSteffensen/AoC2020/day5"
 	"HSteffensen/AoC2020/day6"
+	"HSteffensen/AoC2020/day7"
 	"fmt"
 	"strings"
 )
@@ -60,6 +61,14 @@ func runDay6() {
 	fmt.Println("Day 6, Part 2 answer:", result2)
 }
 
+func runDay7() {
+	data := day7.ReadInput(day7.Input)
+	result1 := len(data.BagsWhichCanContain("shiny gold"))
+	fmt.Println("Day 7, Part 1 answer:", result1)
+	result2 := data.BagsWithin("shiny gold")
+	fmt.Println("Day 7, Part 2 answer:", result2)
+}
+
 func main() {
 	runDay1()
 	runDay2()
@@ -67,4 +76,5 @@ func main() {
 	runDay4()
 	runDay5()
 	runDay6()
+	runDay7()
 }
