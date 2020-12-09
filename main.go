@@ -9,6 +9,7 @@ import (
 	"HSteffensen/AoC2020/day5"
 	"HSteffensen/AoC2020/day6"
 	"HSteffensen/AoC2020/day7"
+	"HSteffensen/AoC2020/day8"
 	"fmt"
 	"strings"
 )
@@ -69,6 +70,14 @@ func runDay7() {
 	fmt.Println("Day 7, Part 2 answer:", result2)
 }
 
+func runDay8() {
+	data := day8.ReadInput(day8.Input)
+	result1 := data.FindLoopAcc()
+	fmt.Println("Day 8, Part 1 answer:", result1)
+	result2 := data.FixLoopAcc()
+	fmt.Println("Day 8, Part 2 answer:", result2)
+}
+
 func main() {
 	runDay1()
 	runDay2()
@@ -77,4 +86,5 @@ func main() {
 	runDay5()
 	runDay6()
 	runDay7()
+	runDay8()
 }
