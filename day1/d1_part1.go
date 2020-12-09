@@ -208,7 +208,7 @@ func FindPairSummingToN(numbers []int, targetN int) (int, int) {
 		cache[v] = true
 	}
 	for _, v := range numbers {
-		_, exists := cache[targetN-v]
+		exists := cache[targetN-v]
 		if exists {
 			return v, targetN - v
 		}

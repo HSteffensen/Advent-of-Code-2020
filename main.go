@@ -10,6 +10,7 @@ import (
 	"HSteffensen/AoC2020/day6"
 	"HSteffensen/AoC2020/day7"
 	"HSteffensen/AoC2020/day8"
+	"HSteffensen/AoC2020/day9"
 	"fmt"
 	"strings"
 )
@@ -78,6 +79,14 @@ func runDay8() {
 	fmt.Println("Day 8, Part 2 answer:", result2)
 }
 
+func runDay9() {
+	data := aocCommon.ReadInputToInts(day9.Input)
+	result1 := data[day9.FirstInvalidIndex(data, 25)]
+	fmt.Println("Day 9, Part 1 answer:", result1)
+	result2 := day9.FindEncryptionWeakness(data, 25)
+	fmt.Println("Day 9, Part 2 answer:", result2)
+}
+
 func main() {
 	runDay1()
 	runDay2()
@@ -87,4 +96,5 @@ func main() {
 	runDay6()
 	runDay7()
 	runDay8()
+	runDay9()
 }
