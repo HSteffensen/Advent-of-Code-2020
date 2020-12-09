@@ -5,6 +5,7 @@ import (
 	"HSteffensen/AoC2020/day1"
 	"HSteffensen/AoC2020/day2"
 	"HSteffensen/AoC2020/day3"
+	"HSteffensen/AoC2020/day4"
 	"fmt"
 )
 
@@ -32,8 +33,17 @@ func runDay3() {
 	fmt.Println("Day 3, Part 2 answer:", result2)
 }
 
+func runDay4() {
+	data := day4.ReadPassports(day4.Input)
+	result1 := day4.CountValidPassports(data)
+	fmt.Println("Day 4, Part 1 answer:", result1)
+	result2 := day4.CountValidPassportsValues(data)
+	fmt.Println("Day 4, Part 2 answer:", result2)
+}
+
 func main() {
 	runDay1()
 	runDay2()
 	runDay3()
+	runDay4()
 }
