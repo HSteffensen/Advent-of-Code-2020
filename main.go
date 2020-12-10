@@ -3,6 +3,7 @@ package main
 import (
 	"HSteffensen/AoC2020/aocCommon"
 	"HSteffensen/AoC2020/day1"
+	"HSteffensen/AoC2020/day10"
 	"HSteffensen/AoC2020/day2"
 	"HSteffensen/AoC2020/day3"
 	"HSteffensen/AoC2020/day4"
@@ -87,6 +88,14 @@ func runDay9() {
 	fmt.Println("Day 9, Part 2 answer:", result2)
 }
 
+func runDay10() {
+	data := aocCommon.ReadInputToInts(day10.Input)
+	result1 := day10.Part1(data)
+	fmt.Println("Day 10, Part 1 answer:", result1)
+	result2 := day10.CountLegalArrangements(data)
+	fmt.Println("Day 10, Part 2 answer:", result2)
+}
+
 func main() {
 	runDay1()
 	runDay2()
@@ -97,4 +106,5 @@ func main() {
 	runDay7()
 	runDay8()
 	runDay9()
+	runDay10()
 }
