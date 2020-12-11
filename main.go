@@ -4,6 +4,7 @@ import (
 	"HSteffensen/AoC2020/aocCommon"
 	"HSteffensen/AoC2020/day1"
 	"HSteffensen/AoC2020/day10"
+	"HSteffensen/AoC2020/day11"
 	"HSteffensen/AoC2020/day2"
 	"HSteffensen/AoC2020/day3"
 	"HSteffensen/AoC2020/day4"
@@ -96,6 +97,14 @@ func runDay10() {
 	fmt.Println("Day 10, Part 2 answer:", result2)
 }
 
+func runDay11() {
+	data := day11.NewSeatGrid(day11.ReadInput(day11.Input))
+	result1 := data.Part1()
+	fmt.Println("Day 11, Part 1 answer:", result1)
+	result2 := data.Part2()
+	fmt.Println("Day 11, Part 2 answer:", result2)
+}
+
 func main() {
 	runDay1()
 	runDay2()
@@ -107,4 +116,5 @@ func main() {
 	runDay8()
 	runDay9()
 	runDay10()
+	runDay11()
 }
