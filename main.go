@@ -109,8 +109,8 @@ func runDay11() {
 func runDay12() {
 	result1 := day12.Part1(day12.Input)
 	fmt.Println("Day 12, Part 1 answer:", result1)
-	// result2 :=
-	// fmt.Println("Day 12, Part 2 answer:", result2)
+	result2 := day12.Part2(day12.Input)
+	fmt.Println("Day 12, Part 2 answer:", result2)
 }
 
 func main() {
