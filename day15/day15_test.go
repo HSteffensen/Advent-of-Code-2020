@@ -2,23 +2,24 @@ package day15_test
 
 import (
 	"HSteffensen/AoC2020/day15"
+	"reflect"
 	"testing"
 )
 
-// func TestGameHistoryReset(t *testing.T) {
-// 	gh := day15.GameHistory{}
-// 	input := []int{0, 3, 6}
-// 	gh.Reset(input)
-// 	if expected := map[int]int{0: 0, 3: 1}; !reflect.DeepEqual(gh.MostRecentTime, expected) {
-// 		t.Errorf("Incorrect recently seen: expected %v, got %v", expected, gh.MostRecentTime)
-// 	}
-// 	if expected := input[len(input)-1]; gh.NextNumber != expected {
-// 		t.Errorf("Incorrect recently seen: expected %v, got %v", gh.MostRecentTime, expected)
-// 	}
-// 	if !reflect.DeepEqual(gh.History, input[:2]) {
-// 		t.Errorf("Incorrect history: expected %v, got %v", input, gh.History)
-// 	}
-// }
+func TestGameHistoryReset(t *testing.T) {
+	gh := day15.GameHistory{}
+	input := []int{0, 3, 6}
+	gh.Reset(input)
+	if expected, result := []uint32{1, 0, 0, 2, 0, 0, 0, 0}, gh.MostRecentTime[:8]; !reflect.DeepEqual(result, expected) {
+		t.Errorf("Incorrect recently seen: expected %v, got %v", expected, result)
+	}
+	if expected, result := input[len(input)-1], int(gh.NextNumber); result != expected {
+		t.Errorf("Incorrect next number: expected %v, got %v", expected, result)
+	}
+	if expected, result := 3, int(gh.Time); expected != result {
+		t.Errorf("Incorrect time: expected %v, got %v", expected, result)
+	}
+}
 
 // func TestGameHistoryStep(t *testing.T) {
 // 	gh := day15.GameHistory{History: []int{0, 3}, NextNumber: 6, MostRecentTime: map[int]int{0: 0, 3: 1}}
@@ -105,4 +106,8 @@ func TestRunUntil2(t *testing.T) {
 	if expected, result := 362, day15.RunUntil([]int{3, 1, 2}, 30000000); expected != result {
 		t.Errorf("Incorrect Part1: expected %v, got %v", expected, result)
 	}
+}
+
+func BenchmarkPart2(b *testing.B) {
+	day15.RunUntil([]int{0, 14, 1, 3, 7, 9}, 30000000)
 }
