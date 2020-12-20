@@ -9,6 +9,7 @@ import (
 	"HSteffensen/AoC2020/day13"
 	"HSteffensen/AoC2020/day14"
 	"HSteffensen/AoC2020/day15"
+	"HSteffensen/AoC2020/day16"
 	"HSteffensen/AoC2020/day2"
 	"HSteffensen/AoC2020/day3"
 	"HSteffensen/AoC2020/day4"
@@ -131,11 +132,18 @@ func runDay14() {
 }
 
 func runDay15() {
-	data := aocCommon.ReadInputToInts("0 14 1 3 7 9")
+	data := aocCommon.ReadInputToInts("0,14,1,3,7,9")
 	result1 := day15.RunUntil(data, 2020)
 	fmt.Println("Day 15, Part 1 answer:", result1)
 	result2 := day15.RunUntil(data, 30000000)
 	fmt.Println("Day 15, Part 2 answer:", result2)
+}
+
+func runDay16() {
+	result1 := day16.Part1(day16.Input)
+	fmt.Println("Day 16, Part 1 answer:", result1)
+	result2 := day16.Part2(day16.Input, "departure")
+	fmt.Println("Day 16, Part 2 answer:", result2)
 }
 
 func main() {
@@ -154,4 +162,5 @@ func main() {
 	runDay13()
 	runDay14()
 	runDay15()
+	runDay16()
 }
