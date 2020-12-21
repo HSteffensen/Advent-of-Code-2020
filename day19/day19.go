@@ -7,7 +7,7 @@ import (
 type RuleName string
 type RuleLiteral string
 type RuleValue interface { // RuleName or RuleLiteral
-	IsLiteral() bool // mostly to avoid 'RuleValue' being just 'interface{}'
+	IsLiteral() bool // mostly to avoid 'RuleValue' being just 'interface{}' - idk if this is best practice but seems sane for type checking reasons
 }
 type RuleList []RuleValue
 type Rule []RuleList
@@ -21,65 +21,8 @@ func (rn RuleLiteral) IsLiteral() bool {
 	return true
 }
 
-type matchMemoKey struct {
-	name  RuleName
-	input string
-}
-
-type matchMemoValue struct {
-	result    bool
-	remaining string
-}
-
-func (g Grammar) helperMatches(input string, currentRule RuleName, memo map[matchMemoKey]matchMemoValue, depth int) (bool, string) {
-	if (string(currentRule) == "8" || string(currentRule) == "11") && depth > 100 {
-		return false, input
-	}
-	memoKey := matchMemoKey{currentRule, input}
-	if memoVal, ok := memo[memoKey]; ok {
-		return memoVal.result, memoVal.remaining
-	}
-	startRule := g[currentRule]
-
-CHOICES:
-	for _, choice := range startRule {
-		branchResult := true
-		branchInput := input
-		for _, item := range choice {
-			switch val := item.(type) {
-			case RuleLiteral:
-				valString := string(val)
-				if strings.HasPrefix(branchInput, valString) {
-					branchInput = branchInput[len(valString):]
-				} else {
-					continue CHOICES
-				}
-			case RuleName:
-				result, bInput := g.helperMatches(branchInput, val, memo, depth+1)
-				branchInput = bInput
-				branchResult = branchResult && result
-			}
-		}
-		if branchResult {
-			memoVal := matchMemoValue{true, branchInput}
-			memo[memoKey] = memoVal
-			return true, branchInput
-		}
-	}
-
-	memoVal := matchMemoValue{false, input}
-	memo[memoKey] = memoVal
-	return false, input
-}
-
-func (g Grammar) Matches(input string) bool {
-	result, remaining := g.helperMatches(input, RuleName("0"), map[matchMemoKey]matchMemoValue{}, 0)
-
-	return result && remaining == ""
-}
-
 func (g Grammar) NextSteps(input string, currentSteps RuleList) (string, []RuleList) {
-	result := make([]RuleList, 0, 2)
+	result := make([]RuleList, 0, 10)
 	if len(currentSteps) > 0 {
 		switch val := currentSteps[0].(type) {
 		case RuleLiteral:
@@ -105,7 +48,7 @@ func (g Grammar) Matches2(input string) bool {
 		input string
 		list  RuleList
 	}
-	queue := make([]queueItem, 0, 1000000)
+	queue := make([]queueItem, 0, 1000)
 	var queueify = func(inp string, rl []RuleList) []queueItem {
 		ql := make([]queueItem, 0, len(rl))
 		for _, r := range rl {
