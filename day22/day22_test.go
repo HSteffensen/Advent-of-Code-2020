@@ -80,3 +80,7 @@ func TestPart2(t *testing.T) {
 		t.Errorf("Incorrect part 2: expected %v, got %v", expected, result)
 	}
 }
+
+func BenchmarkPart2(t *testing.B) {
+	day22.Part2(day22.Input)
+}
