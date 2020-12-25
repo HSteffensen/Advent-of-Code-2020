@@ -199,8 +199,8 @@ func runDay22() {
 func runDay23() {
 	result1 := day23.Part1("135468729", 100)
 	fmt.Println("Day 23, Part 1 answer:", result1)
-	// result2 :=
-	// fmt.Println("Day 23, Part 2 answer:", result2)
+	result2 := day23.Part2("135468729")
+	fmt.Println("Day 23, Part 2 answer:", result2)
 }
 
 func main() {
