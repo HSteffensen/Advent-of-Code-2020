@@ -18,6 +18,7 @@ import (
 	"HSteffensen/AoC2020/day21"
 	"HSteffensen/AoC2020/day22"
 	"HSteffensen/AoC2020/day23"
+	"HSteffensen/AoC2020/day24"
 	"HSteffensen/AoC2020/day3"
 	"HSteffensen/AoC2020/day4"
 	"HSteffensen/AoC2020/day5"
@@ -203,6 +204,13 @@ func runDay23() {
 	fmt.Println("Day 23, Part 2 answer:", result2)
 }
 
+func runDay24() {
+	result1 := day24.Part1(day24.Input)
+	fmt.Println("Day 24, Part 1 answer:", result1)
+	result2 := day24.Part2(day24.Input)
+	fmt.Println("Day 24, Part 2 answer:", result2)
+}
+
 func main() {
 	runDay1()
 	runDay2()
@@ -227,4 +235,5 @@ func main() {
 	runDay21()
 	runDay22()
 	runDay23()
+	runDay24()
 }
